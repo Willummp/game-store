@@ -11,3 +11,5 @@ async function bootstrap() {
   await app.listen(4000);
 }
 bootstrap();
+
+//TODO - Fazer a relação entre o produto e a categoria  n:1  e 1:n
