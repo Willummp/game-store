@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator"
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
+import { Produto } from "src/produto/entities/produto.entity"
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm"
 
 @Entity({name: 'tb_categorias'}) //NOTE ISSO É UM DECORATOR, que criou a entidade 
 export class Categoria {
@@ -16,4 +17,9 @@ export class Categoria {
 
   @UpdateDateColumn()
   updatedAt: Date
+
+  
+  
+  @OneToMany(() => Produto,(produto) => produto.categoria)
+  produto: Produto[]
 }

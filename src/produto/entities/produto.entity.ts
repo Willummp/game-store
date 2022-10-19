@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Categoria } from "src/categoria/entities/categoria.entity";
+import { Column, CreateDateColumn, Entity, ManyToMany, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
 @Entity({name: 'tb_produtos'}) //NOTE - Isso é um DECORATOR
@@ -16,9 +17,13 @@ export class Produto {
   createdAt: Date;
 
   @UpdateDateColumn() //NOTE  Só pra falar q data é uma DATA msm
-  updatedAt: Date;
+  updatedAt: Date; 
 
+  @ManyToOne(() => Categoria, (categoria) => categoria.produto, {
+    onDelete: "CASCADE"
+  }) categoria: Categoria
 
 }
+
 
 
