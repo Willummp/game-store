@@ -23,10 +23,8 @@ export class CategoriaService {
   }
 
   async findById(id: number): Promise<Categoria> { //NOTE - Procurando pelo ID
-    const categoriaExistencia = await this.categoriaRepository.findOne({
-      where: { id },
-      relations: {produto:true}
-    });
+    const categoriaExistencia = await this.categoriaRepository.findOne({where: { id },relations: {produto:true}});
+    
     if (!categoriaExistencia) { //NOTE - Se  não existir um ID (armazenado em categoriaExistencia), aconteça linha 31
       throw new HttpException('Categoria não encontrado.', HttpStatus.NOT_FOUND)
     }
